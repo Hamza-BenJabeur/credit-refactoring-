@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3000/credits';
+const url = 'http://localhost:5000/credits';
 
 export const fetchCredits = () => axios.get(url);
 export const createCredit = (newCredit) => axios.post(url, newCredit);

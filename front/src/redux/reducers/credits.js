@@ -1,6 +1,6 @@
 import {CREATE,FETCH_ALL,UPDATE_BY_SUBSTRACTING,UPDATE_BY_ADDING,DELETE}from '../constants/actionsType.js'
 
-export default (credits = [], action) => {
+export default(credits = [], action) => {
     switch (action.type) {
       case FETCH_ALL:
         return action.payload;
