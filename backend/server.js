@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import credit from './routes/credit.js'
-const PORT = process.env.PORT|| 3000;
+const PORT = process.env.PORT|| 5000;
 const app=express();
 
 

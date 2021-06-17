@@ -31,13 +31,13 @@ export const createCredit = async (req, res) => {
 
 export const updateByAddingCredit = async (req, res) => {
     const { id } = req.params;
-    const { name, price, date} = req.body;
+    const { name, price} = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No credit with id: ${id}`);
     const oldCredit=await Credit.findById(id)
     const oldPrice=oldCredit.price
-    const NewPrice=oldPrice+price
-    const updateCredit = { name, price:NewPrice, date, _id: id };
+    const NewPrice=Number(oldPrice)+Number(price)
+    const updateCredit = { name, price:NewPrice, _id: id };
 
     await Credit.findByIdAndUpdate(id, updateCredit, { new: true });
 
@@ -45,13 +45,13 @@ export const updateByAddingCredit = async (req, res) => {
 }
 export const updateBySubtractingCredit = async (req, res) => {
     const { id } = req.params;
-    const { name, price, date} = req.body;
+    const { name, price} = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No credit with id: ${id}`);
     const oldCredit=await Credit.findById(id)
     const oldPrice=oldCredit.price
     const NewPrice=oldPrice-price
-    const updateCredit = { name, price:NewPrice, date, _id: id };
+    const updateCredit = { name, price:NewPrice, _id: id };
 
     await Credit.findByIdAndUpdate(id, updateCredit, { new: true });
 
