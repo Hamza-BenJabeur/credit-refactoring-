@@ -25,7 +25,7 @@ export default function Note({setCurrentId,clientName}) {
   const searchedClient=credits.filter((credit)=>  credit.name.includes(clientName))
     const classes = useStyles();
     return (
-      !credits.length?<CircularProgress/>:(
+      !credits.length?<CircularProgress size="500px" thickness={30}/>:(
         <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
