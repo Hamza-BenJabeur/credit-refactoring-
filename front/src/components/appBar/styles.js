@@ -6,13 +6,18 @@ export default makeStyles(() => ({
     margin: '30px 0',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
-  heading: {
-    color: 'rgba(0,183,255, 1)',
+  inconTitle:{
+    display:"flex",
+    flexDirection:"row",
+    alignItems:"center"
   },
   image: {
     marginLeft: '15px',
   },
+  search:{
+    marginRight:"15px"
+  }
 }));

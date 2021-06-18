@@ -41,12 +41,12 @@ export default function Form({ currentId, setCurrentId }) {
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={classes.form} >
         <Typography variant="h6">{currentId?`Editing credit of ${credit.name}`:'creating credit'}</Typography>
-        <TextField name="name" variant="outlined" label="FullName" fullWidth value={creditData.name} onChange={(e) => setCreditData({ ...creditData, name: e.target.value })}/>
-        <TextField name="Price" variant="outlined" label="Price" type="number" fullWidth value={creditData.price} onChange={(e)=>setCreditData({...creditData,price:e.target.value})}/>
+        <TextField name="name" variant="outlined" label="FullName" fullWidth value={creditData.name} onChange={(e) => setCreditData({ ...creditData, name: e.target.value })}  />
+        <TextField name="Price" variant="outlined" label="Price" type="number" fullWidth value={creditData.price} onChange={(e)=>setCreditData({...creditData,price:e.target.value})} />
         {!currentId?
         <div>
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth onClick={handleCreate}>Create</Button>
-        <Button variant="contained" color="secondary" size="small" fullWidth>Clear</Button>
+        <Button variant="contained" color="secondary" size="small" fullWidth onClick={clear}>Clear</Button>
         </div>
         :
         <div>

@@ -19,9 +19,10 @@ const useStyles = makeStyles({
       minWidth: 500,
     },
   });
-export default function Note({setCurrentId}) {
+export default function Note({setCurrentId,clientName}) {
   const dispatch = useDispatch();
   const credits = useSelector((state) => state.credits);
+  const searchedClient=credits.filter((credit)=>  credit.name.includes(clientName))
     const classes = useStyles();
     return (
       !credits.length?<CircularProgress/>:(
@@ -36,7 +37,8 @@ export default function Note({setCurrentId}) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {credits.map((credit) => (
+            {!searchedClient?
+            credits.map((credit) => (
               <TableRow key={credit.name}>
                 <TableCell component="th" scope="row">
                   {credit.name}
@@ -48,7 +50,22 @@ export default function Note({setCurrentId}) {
                 <Button  color="primary" size="small" onClick={() => setCurrentId(credit._id)}><MoreHorizIcon fontSize="default" /></Button>
                   </TableCell>
               </TableRow>
-            ))}
+            ))
+          :
+          searchedClient.map((credit) => (
+            <TableRow key={credit.name}>
+              <TableCell component="th" scope="row">
+                {credit.name}
+              </TableCell>
+              <TableCell align="right">{credit.price}</TableCell>
+              <TableCell align="right">{moment(credit.createdAt).fromNow()}</TableCell>
+              <TableCell align="right">
+              <Button size="small" color="primary" onClick={() => dispatch(deleteCredit(credit._id))}><DeleteIcon fontSize="small" /></Button>
+              <Button  color="primary" size="small" onClick={() => setCurrentId(credit._id)}><MoreHorizIcon fontSize="default" /></Button>
+                </TableCell>
+            </TableRow>
+          ))
+          }
           </TableBody>
         </Table>
       </TableContainer>
